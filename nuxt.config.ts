@@ -21,7 +21,7 @@ export default defineNuxtConfig({
       },
     },
   },
-  modules: ['@nuxtjs/svg-sprite', '@pinia/nuxt'],
+  modules: ['@pinia/nuxt'],
   imports: {
     dirs: ['./stores'],
   },

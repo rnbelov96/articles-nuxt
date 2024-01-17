@@ -7,11 +7,21 @@
       class="pagination__btn pagination__btn--nav pagination__btn--nav--prev"
       @click="$emit('update', currentPage - 1)"
     >
-      <svg-icon
-        name="pag-icon"
+      <svg
         width="24"
         height="24"
-      />
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9.5 7.5L14.5 12.5L9.5 17.5"
+          stroke="#494949"
+          stroke-width="1.3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
     </button>
     <button
       v-for="page in paginationList"
@@ -30,11 +40,21 @@
       class="pagination__btn pagination__btn--nav"
       @click="$emit('update', currentPage + 1)"
     >
-      <svg-icon
-        name="pag-icon"
+      <svg
         width="24"
         height="24"
-      />
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9.5 7.5L14.5 12.5L9.5 17.5"
+          stroke="#494949"
+          stroke-width="1.3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
     </button>
   </div>
 </template>

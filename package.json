@@ -21,7 +21,6 @@
     "vue-tsc": "^1.8.27"
   },
   "dependencies": {
-    "@nuxtjs/svg-sprite": "^1.0.2",
     "@pinia/nuxt": "^0.5.1",
     "pinia": "^2.1.7"
   }
