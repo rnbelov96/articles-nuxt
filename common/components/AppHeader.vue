@@ -2,7 +2,7 @@
   <header class="header">
     <div class="container container--large">
       <div class="header__content">
-        <nuxt-link to="/">
+        <nuxt-link :to="{name: 'index'}">
           <svg
             width="84"
             height="25"

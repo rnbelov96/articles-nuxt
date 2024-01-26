@@ -47,7 +47,19 @@
 import { usePagination } from '~/common/composables/use-pagination';
 import { type Article } from '~/types/index';
 
-const { data } = await useFetch<Article[]>('https://6082e3545dbd2c001757abf5.mockapi.io/qtim-test-work/posts/');
+const nuxtApp = useNuxtApp();
+const { data } = await useFetch<Article[]>('https://6082e3545dbd2c001757abf5.mockapi.io/qtim-test-work/posts/', {
+  getCachedData(key) {
+    return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
+  },
+});
+
+const items = computed(() => {
+  if (data.value) {
+    return [...data.value].reverse();
+  }
+  return null;
+});
 
 const {
   currentPage,
@@ -55,7 +67,7 @@ const {
   paginationList,
   totalPages,
   currentItems,
-} = usePagination(data, {
+} = usePagination(items, {
   itemsPerPage: 8,
   onPageChange: () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

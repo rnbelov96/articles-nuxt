@@ -5,7 +5,7 @@
       :key="article.id"
       class="article-list__item"
     >
-      <nuxt-link :to="`/article/${article.id}`">
+      <nuxt-link :to="{name: 'article-id', params: {id: article.id}}">
         <slot
           v-bind="article"
           name="card"

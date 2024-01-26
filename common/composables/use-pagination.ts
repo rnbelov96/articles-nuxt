@@ -6,11 +6,13 @@ type UsePaginationOptions = {
 };
 
 export const usePagination = (
-  items: globalThis.Ref<any[] | null>,
+  items: any[] | globalThis.Ref<any[] | null>,
   options?: UsePaginationOptions,
 ) => {
   const route = useRoute();
   const router = useRouter();
+
+  const itemList = isRef(items) ? items.value : items;
 
   let isRouteChanged = false;
 
@@ -33,7 +35,7 @@ export const usePagination = (
     router.push({ path: route.path, query: { page: newPage } });
   };
 
-  const totalPages = computed(() => Math.ceil((items.value?.length ?? 0) / itemsPerPage));
+  const totalPages = computed(() => Math.ceil((itemList?.length ?? 0) / itemsPerPage));
 
   if (currentPage.value > totalPages.value) {
     currentPage.value = 1;
@@ -81,10 +83,10 @@ export const usePagination = (
   });
 
   const currentItems = computed(() => {
-    if (!items.value) {
+    if (!itemList) {
       return [];
     }
-    return items.value.slice(
+    return itemList?.slice(
       (currentPage.value - 1) * itemsPerPage,
       currentPage.value * itemsPerPage,
     );
